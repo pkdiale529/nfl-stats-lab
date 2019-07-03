@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fans Dashboard</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+	<style type="text/css">
+		tr {
+			background-color: #20B2AA;
+		}
+
+		td {
+			font-size: 15px;
+			font-weight: bold;
+			font-family:Arial;
+		}
+
+		body {
+			background-image: url('img/28-nfl-cowboys-cheerleaders.w700.h700.jpg');
+		}
+	</style>
+
+	<script type="text/javascript" src="js/other_users.js">
+
+	</script>
+</head>
+<body>
+	<div class="container" style="width: 70%; background-color: whitesmoke; padding-bottom: 350px;">
+		<nav class="navbar navbar-expand-sm bg-info navbar-dark">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+				  <a class="nav-link" href="index.html">Home</a>
+				</li>
+				<li class="nav-item active">
+				  <a class="nav-link" href="other_users.html">For The Fans</a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" href="all_games_played.html">All Games Played</a>
+				</li>
+			</ul>
+		</nav>
+		<div class="container mt-3">
+			<div class="container mt-3">
+	  			<h2>Team Stats</h2><br>
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs">
+				  <li class="nav-item">
+				    <a class="nav-link active text-info" data-toggle="tab" href="#stats">Dashboard</a>
+				  </li>
+				</ul>
+	  			<!-- Tab pane -->
+	  			<div class="tab-content">
+	    			<div id="stats" class="container tab-pane active"><br>
+	      				<h3>Player Stats</h3><br>
+	      				<form>
+							<!-- Select Positon -->
+							<select name="positions" class="custom-select" style="width: 20%; margin-right: 20px;" onchange="positionSelect(this.value)" id="positionsSelect">
+								<option selected>Select Position</option>
+								<!-- Offense Unit -->
+								<option value="QB">Quarter Back</option>
+								<option value="RB">Running Back</option>
+								<option value="WR">Wide Receiver</option>
+								<option value="TE">Tight End</option>
+								<!-- Defense Unit -->
+								<option value="D">Defense</option>
+								<!-- Special Unit -->
+								<option value="K">Kicker</option>
+					  		</select>
+					  		<!-- Select Player -->
+					  		<select id="selectPlayerName" class="custom-select" style="width: 20%; margin-right: 20px;">
+					  			<option id="sap" selected>Select a Player</option>
+					  				
+					  			</option>
+					  		</select>
+					  		<br><br>
+					  		<!-- Toggle Switches to check wanted stats -->
+					  		<h5 id="heading" style="display: none;">Select Stat Categories</h5><br>
+					  		<!-- Stats for the QUARTER BACK -->
+					  		<div class="container-fluid" style="border-radius: 25px; padding: 15px; width: 100%; border: 2px solid lightgrey; display: none;" id="qbStats">
+					  			<div class="row">
+					  				<div class="col-sm-3">
+					  					<div class="custom-control custom-switch">
+										    <input type="checkbox" class="custom-control-input" id="touchdown_passes" value="Touchdown_Passes" name="QB">
+										    <label class="custom-control-label" for="touchdown_passes">Touchdown Passes</label>
+	  									</div>
+					  				</div>
+					  				<div class="col-sm-3">
+					  					<div class="custom-control custom-switch">
+										    <input type="checkbox" class="custom-control-input" id="rushing_yards" value="Rushing_Yards" name="QB">
+										    <label class="custom-control-label" for="rushing_yards">Rushing Yards</label>
+	  									</div>
+					  				</div>
+					  				<div class="col-sm-3">
+					  					<div class="custom-control custom-switch">
+										    <input type="checkbox" class="custom-control-input" id="passing_yards" value="Passing_Yards" name="QB">
+										    <label class="custom-control-label" for="passing_yards">Passing Yards</label>
+	  									</div>
+					  				</div>
+					  				<div class="col-sm-3">
+					  					<div class="custom-control custom-switch">
+										    <input type="checkbox" class="custom-control-input" id="interceptions" value="Interceptions" name="QB">
+										    <label class="custom-control-label" for="interceptions">Interceptions</label>
+	  									</div>
+					  				</div>
+					  				<div class="col-sm-3">
+					  					<div class="custom-control custom-switch">
+										    <input type="checkbox" class="custom-control-input" id="pass_completions" value="Pass_Completions" name="QB">
+										    <label class="custom-control-label" for="pass_completions">Pass Completions</label>
+	  									</div>
+					  				</div>
+					  				<div class="col-sm-3">
+					  					<div class="custom-control custom-switch">
+										    <input type="checkbox" class="custom-control-input" id="pass_attempts" value="Pass_Attempts" name="QB">
+										    <label class="custom-control-label" for="pass_attempts">Pass Attempts</label>
+	  									</div>
+					  				</div>
+
+					  			</div>
+					  		</div>
+					  		<!-- Stats for the RUNNING BACK -->
+					  		<div class="container-fluid" style="border-radius: 25px; padding: 15px; width: 100%; border: 2px solid lightgrey; display: none;" id="rbStats">
+					  			<div class="row">
+					  				<div class="col-sm-3">
+					  					<div class="custom-control custom-switch">
+										    <input type="checkbox" class="custom-control-input" id="receiving_yards" name="RB" value="Receiving_Yards">
+										    <label class="custom-control-label" for="receiving_yards">Receiving Yards</label>
+	  									</div>
+					  				</div>
+					  				<div class="col-sm-3">
+					  					<div class="custom-control custom-switch">
+										    <input type="checkbox" class="custom-control-input" id="receiving_touchdowns" name="RB" value="Receiving_Touchdowns">
+										    <label class="custom-control-label" for="receiving_touchdowns">Receiving Touchdowns</label>
+	  									</div>
+					  				</div>
+					  				<div class="col-sm-3">
+					  					<div class="custom-control custom-switch">
+										    <input type="checkbox" class="custom-control-input" id="receptions" name="RB" value="Receptions">
+										    <label class="custom-control-label" for="receptions">Receptions</label>
+	  									</div>
+					  				</div>
+					  				<div class="col-sm-3">
+					  					<div class="custom-control custom-switch">
+										    <input type="checkbox" class="custom-control-input" id="carries" name="RB" value="Carries">
+										    <label class="custom-control-label" for="carries">Carries</label>
+	  									</div>
+					  				</div>
+					  				<div class="col-sm-3">
+					  					<div class="custom-control custom-switch">
+										    <input type="checkbox" class="custom-control-input" id="rushing_touchdowns" name="RB" value="Rushing_Touchdowns">
+										    <label class="custom-control-label" for="rushing_touchdowns">Rushing Touchdowns</label>
+	  									</div>
+					  				</div>
+					  				<div class="col-sm-3">
+					  					<div class="custom-control custom-switch">
+										    <input type="checkbox" class="custom-control-input" id="rushing_yards" name="RB" value="Rushing_Yards">
+										    <label class="custom-control-label" for="rushing_yards">Rushing Yards</label>
+	  									</div>
+					  				</div>
+					  			</div>
+					  		</div>
+					  		<!-- Stats for the WIDE RECEIVER -->
+					  		<div class="container-fluid" style="border-radius: 25px; padding: 15px; width: 100%; border: 2px solid lightgrey; display: none;" id="wrStats">
+					  			<div class="row">
+					  				<div class="col-sm-3">
+					  					<div class="custom-control custom-switch">
+										    <input type="checkbox" class="custom-control-input" id="receiving_yards" name="WRTE" value="Receiving_Yards">
+										    <label class="custom-control-label" for="receiving_yards">Receiving Yards</label>
+	  									</div>
+					  				</div>
+					  				<div class="col-sm-3">
+					  					<div class="custom-control custom-switch">
+										    <input type="checkbox" class="custom-control-input" id="receiving_touchdowns" name="WRTE" value="Receiving_Touchdowns">
+										    <label class="custom-control-label" for="receiving_touchdowns">Receiving Touchdowns</label>
+	  									</div>
+					  				</div>
+					  				<div class="col-sm-3">
+					  					<div class="custom-control custom-switch">
+										    <input type="checkbox" class="custom-control-input" id="receptions" name="WRTE" value="Receptions">
+										    <label class="custom-control-label" for="receptions">Receptions</label>
+	  									</div>
+					  				</div>
+					  				<div class="col-sm-3">
+					  					<div class="custom-control custom-switch">
+										    <input type="checkbox" class="custom-control-input" id="rushing_yards" name="WRTE" value="Rushing_Yards">
+										    <label class="custom-control-label" for="rushing_yards">Rushing Yards</label>
+	  									</div>
+					  				</div>
+					  			</div>
+					  		</div>
+					  		<!-- Stats for the KICKER -->
+					  		<div class="container-fluid" style="border-radius: 25px; padding: 15px; width: 100%; border: 2px solid lightgrey; display: none;" id="kStats">
+					  			<div class="row">
+					  				<div class="col-sm-3">
+					  					<div class="custom-control custom-switch">
+										    <input type="checkbox" class="custom-control-input" id="field_goals_made" name="K" value="Field_Goals_Made">
+										    <label class="custom-control-label" for="field_goals_made">Field Goals Made</label>
+	  									</div>
+					  				</div>
+					  				<div class="col-sm-3">
+					  					<div class="custom-control custom-switch">
+										    <input type="checkbox" class="custom-control-input" id="field_goal_attempts" name="K" value="Field_Goal_Attempts">
+										    <label class="custom-control-label" for="field_goal_attempts">Field Goal Attempts</label>
+	  									</div>
+					  				</div>
+					  			</div>
+					  		</div>
+					  		<!-- Stats for the DEFENSE -->
+					  		<div class="container-fluid" style="border-radius: 25px; padding: 15px; width: 100%; border: 2px solid lightgrey; display: none;" id="dStats">
+					  			<div class="row">
+					  				<div class="col-sm-3">
+					  					<div class="custom-control custom-switch">
+										    <input type="checkbox" class="custom-control-input" id="sacks" name="D" value="Sacks">
+										    <label class="custom-control-label" for="sacks">Sacks</label>
+	  									</div>
+					  				</div>
+					  				<div class="col-sm-3">
+					  					<div class="custom-control custom-switch">
+										    <input type="checkbox" class="custom-control-input" id="tackles" name="D" value="Tackles">
+										    <label class="custom-control-label" for="tackles">Tackles</label>
+	  									</div>
+					  				</div>
+					  				<div class="col-sm-3">
+					  					<div class="custom-control custom-switch">
+										    <input type="checkbox" class="custom-control-input" id="interceptions" name="D" value="Interceptions">
+										    <label class="custom-control-label" for="interceptions">Interceptions</label>
+	  									</div>
+					  				</div>
+					  				<div class="col-sm-3">
+					  					<div class="custom-control custom-switch">
+										    <input type="checkbox" class="custom-control-input" id="fumbles_forced" name="D" value="Fumbles_Forced">
+										    <label class="custom-control-label" for="fumbles_forced">Fumbles Forced</label>
+	  									</div>
+					  				</div>
+					  			</div>
+					  		</div>
+					  		<input type="button" name="Proceed" id="btn_proceed" value="Proceed" class="btn btn-info" onclick="submit_retrieval_form()" style="margin-top: 25px; display: none;" />
+						</form>
+						<!-- Player Data will be displayed here -->
+						<br>
+						<table class="table">
+							<thead class="thead-dark" id="statsTable">
+								
+							</thead>
+							<tbody id="statsDetailed">
+								
+							</tbody>
+						</table>
+						<br>
+						<div class="card" style="width:400px; display: none; align-items: center;" id="profile">
+						    <div class="card-body">
+						      <h4 class="card-title" id="nameTitle"></h4>
+						      <p class="card-text" id="posTitle"></p>
+						      <p class="card-text" id="ageTitle"></p>
+						      <p class="card-text" id="bdayTitle"></p>
+						      <p class="card-text" id="nationalityTitle"></p>
+						      <img class="card-img-bottom" src="img/barner.png" alt="Card image">
+						    </div>
+  			 			 </div>
+	    			</div>
+	  			</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

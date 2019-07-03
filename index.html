@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Varsity Football Stats Lab</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<!-- Just My Own Styles Right Here -->
+	<style type="text/css">
+		body {
+			background-image: url(img/5458232-american-football-wallpaper-on-grass.jpg);
+		}
+	</style>
+	<script type="text/javascript">
+		function getTopPlayers() {
+			
+			xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					myObj = JSON.parse(this.responseText);
+					//console.log(this.responseText);
+					document.getElementById('num1').innerHTML = myObj[0].Fname + " " + myObj[0].Lname;
+					document.getElementById('num1age').innerHTML = myObj[0].Age;
+					document.getElementById('num1stats').innerHTML = myObj[0].Touchdown_Passes;
+
+					document.getElementById('num2').innerHTML = myObj[1].Fname + " " + myObj[1].Lname;
+					document.getElementById('num2age').innerHTML = myObj[1].Age;
+					document.getElementById('num2stats').innerHTML = myObj[1].Field_Goals_Made;
+
+					document.getElementById('num3').innerHTML = myObj[2].Fname + " " + myObj[2].Lname;
+					document.getElementById('num3age').innerHTML = myObj[2].Age;
+					document.getElementById('num3stats').innerHTML = myObj[2].Rushing_Touchdowns;
+
+					document.getElementById('num4').innerHTML = myObj[3].Fname + " " + myObj[3].Lname;
+					document.getElementById('num4age').innerHTML = myObj[3].Age;
+					document.getElementById('num4stats').innerHTML = myObj[3].Sacks;
+
+					document.getElementById('num5').innerHTML = myObj[4].Fname + " " + myObj[4].Lname;
+					document.getElementById('num5age').innerHTML = myObj[4].Age;
+					document.getElementById('num5stats').innerHTML = myObj[4].Receiving_Touchdowns;
+				}
+			};
+			xmlhttp.open("POST","retrieve_top_players.php", true);
+			xmlhttp.send();
+		}
+	</script>
+</head>
+<body onload="getTopPlayers()"> 
+	<div class="container" style="margin-top: 135px;">
+		<a href="staff_form.html" class="btn btn-info btn-lg btn-block" role="button">COACHES</a>
+		<a href="other_users.html" class="btn btn-info btn-lg btn-block" role="button">FANS</a>
+	</div>		
+	<div class="container" style="margin-top: 50px;">
+		<div class="card-deck">
+			<div class="card" style="width: 400px;">
+			  <img class="card-img-top" src="img/barner.png" alt="Card image">
+			  <div class="card-body">
+			    <h4 class="card-title" id="num1">John Doe</h4>
+			    <p class="card-text">Top Quarter Back</p>
+			    <p class="card-text">Aged: <strong id="num1age"></strong></p>
+			    <p class="card-text">Touchdown Passes: <strong id="num1stats"></strong></p>
+			  </div>
+			</div>
+			<div class="card" style="width: 400px;">
+			  <img class="card-img-top" src="img/2560119.png" alt="Card image">
+			  <div class="card-body">
+			    <h4 class="card-title" id="num2">John Doe</h4>
+			    <p class="card-text">Top Kicker</p>
+			     <p class="card-text">Aged: <strong id="num2age"></strong></p>
+			    <p class="card-text">Field Goals Made: <strong id="num2stats"></strong></p>
+			  </div>
+			</div>
+			<div class="card" style="width: 400px;">
+			  <img class="card-img-top" src="img/3924365.png" alt="Card image">
+			  <div class="card-body">
+			    <h4 class="card-title" id="num3">John Doe</h4>
+			    <p class="card-text">Top Running Back</p>
+			     <p class="card-text">Aged: <strong id="num3age"></strong></p>
+			    <p class="card-text">Rushing Touchdowns: <strong id="num3stats"></strong></p>
+			  </div>
+			</div>
+			<div class="card" style="width: 400px;">
+			  <img class="card-img-top" src="img/i.png" alt="Card image">
+			  <div class="card-body">
+			    <h4 class="card-title" id="num4">John Doe</h4>
+			    <p class="card-text">Top Defense</p>
+			     <p class="card-text">Aged: <strong id="num4age"></strong></p>
+			    <p class="card-text">Sacks: <strong id="num4stats"></strong></p>
+			  </div>
+			</div>
+			<div class="card" style="width: 400px;">
+			  <img class="card-img-top" src="img/3916387.png" alt="Card image">
+			  <div class="card-body">
+			    <h4 class="card-title" id="num5">John Doe</h4>
+			    <p class="card-text">Top Fullback</p>
+			     <p class="card-text">Aged: <strong id="num5age"></strong></p>
+			    <p class="card-text">Receiving Touchdowns: <strong id="num5stats"></strong></p>
+			  </div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
